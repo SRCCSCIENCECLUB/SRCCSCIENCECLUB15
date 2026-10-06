@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRCC Science Club - Admin Panel</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #f4f6f9; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .card { background: #ffffff; width: 100%; max-width: 480px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    h2 { text-align: center; color: #333; margin-top: 0; }
+    input, textarea, button { width: 100%; margin-top: 12px; padding: 12px; border-radius: 6px; border: 1px solid #ccc; font-size: 15px; }
+    textarea { resize: vertical; }
+    button { background-color: #0d6efd; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    button:hover { background-color: #0b5ed7; }
+    .btn-danger { background-color: #dc3545; margin-top: 8px; }
+    .btn-danger:hover { background-color: #bb2d3b; }
+    .hidden { display: none; }
+    .msg { margin-top: 10px; font-size: 14px; text-align: center; }
+    .error { color: #dc3545; }
+    .success { color: #198754; }
+  </style>
+</head>
+<body>
+
+  <!-- Admin Login Form -->
+  <div id="login-card" class="card">
+    <h2>Admin Login</h2>
+    <input type="email" id="email" placeholder="Admin Email">
+    <input type="password" id="password" placeholder="Password">
+    <button id="login-btn">Login</button>
+    <div id="login-msg" class="msg error"></div>
+  </div>
+
+  <!-- Post Notice / Update Panel -->
+  <div id="admin-card" class="card hidden">
+    <h2>Post New Update</h2>
+    <input type="text" id="notice-title" placeholder="Notice / Event Title">
+    <textarea id="notice-content" rows="5" placeholder="Write notice details here..."></textarea>
+    <button id="post-btn">Publish Notice</button>
+    <button id="logout-btn" class="btn-danger">Logout</button>
+    <div id="post-msg" class="msg success"></div>
+  </div>
+
+  <!-- Firebase v12 SDK Integration -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+    import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
+
+    // Apnar Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyD1jnuon-xzLpvVs9acHFMZ5atmfWfs-GE",
+      authDomain: "srcc-science-club.firebaseapp.com",
+      projectId: "srcc-science-club",
+      storageBucket: "srcc-science-club.firebasestorage.app",
+      messagingSenderId: "48971685523",
+      appId: "1:48971685523:web:5566c60134b34d1fc9f766",
+      measurementId: "G-YXELNHL24L"
+    };
+
+    // Firebase Init
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+
+    const loginCard = document.getElementById('login-card');
+    const adminCard = document.getElementById('admin-card');
+    const loginMsg = document.getElementById('login-msg');
+    const postMsg = document.getElementById('post-msg');
+
+    // Auto Check Authentication Status
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        loginCard.classList.add('hidden');
+        adminCard.classList.remove('hidden');
+      } else {
+        loginCard.classList.remove('hidden');
+        adminCard.classList.add('hidden');
+      }
+    });
+
+    // Login Action
+    document.getElementById('login-btn').addEventListener('click', () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      loginMsg.innerText = "";
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          loginMsg.innerText = "";
+        })
+        .catch((error) => {
+          loginMsg.innerText = "Login failed: " + error.message;
+        });
+    });
+
+    // Publish Notice Action
+    document.getElementById('post-btn').addEventListener('click', () => {
+      const title = document.getElementById('notice-title').value.trim();
+      const content = document.getElementById('notice-content').value.trim();
+
+      if (!title || !content) {
+        postMsg.style.color = "#dc3545";
+        postMsg.innerText = "Please fill in all fields.";
+        return;
+      }
+
+      const newNoticeRef = push(ref(db, 'notices'));
+      set(newNoticeRef, {
+        title: title,
+        content: content,
+        timestamp: new Date().toISOString(),
+        date: new Date().toLocaleDateString('bn-BD')
+      }).then(() => {
+        postMsg.style.color = "#198754";
+        postMsg.innerText = "Notice Published Successfully!";
+        document.getElementById('notice-title').value = "";
+        document.getElementById('notice-content').value = "";
+      }).catch((err) => {
+        postMsg.style.color = "#dc3545";
+        postMsg.innerText = "Error: " + err.message;
+      });
+    });
+
+    // Logout Action
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      signOut(auth);
+    });
+  </script>
+</body>
+</html>
