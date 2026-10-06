@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SRCC Science Club</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#f6f8fb;color:#172033;line-height:1.6}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #e5e9f0}
+.nav{max-width:1150px;margin:auto;padding:15px 20px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;font-size:21px;color:#123c69}.brand small{display:block;font-size:10px;color:#65748b;letter-spacing:2px}
+nav a{color:#172033;text-decoration:none;margin-left:20px;font-size:14px;font-weight:600}
+.hero{background:linear-gradient(135deg,#123c69,#176b87);color:white;text-align:center;padding:95px 20px}
+.hero h1{font-size:clamp(38px,7vw,70px);margin-bottom:10px}.hero h2{font-size:18px;font-weight:500;opacity:.95}
+.motto{margin:22px 0;font-weight:800;letter-spacing:3px;font-size:18px}
+.btn{display:inline-block;padding:12px 20px;border-radius:8px;background:white;color:#123c69;text-decoration:none;font-weight:700;margin:5px}
+.btn.alt{background:transparent;color:white;border:1px solid #fff}
+section{max-width:1150px;margin:auto;padding:70px 20px}
+.title{text-align:center;margin-bottom:35px}.title h2{font-size:32px;color:#123c69}.title p{color:#69778a}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:white;border:1px solid #e4e9ef;border-radius:14px;padding:25px;box-shadow:0 5px 18px rgba(0,0,0,.05)}
+.card h3{color:#123c69;margin-bottom:8px}.card p{color:#59677a}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:25px}
+.stat{text-align:center;background:#fff;padding:20px;border-radius:12px;border:1px solid #e4e9ef}.stat b{display:block;font-size:28px;color:#176b87}
+.notice{background:#fff;border-left:5px solid #176b87;padding:25px;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,.05)}
+.committee .member{text-align:center}.avatar{width:105px;height:105px;border-radius:50%;margin:0 auto 15px;background:#e9eef4;border:3px solid #d5dde7;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;color:#123c69;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.member .role{font-size:13px;color:#176b87;font-weight:700}.member .name{margin-top:4px;color:#68768a;font-size:14px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.gallery-item{height:210px;border-radius:14px;background:linear-gradient(135deg,#e8eef5,#d5e4ea);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:#123c69;font-weight:800;letter-spacing:1px;overflow:hidden}
+.gallery-item img{width:100%;height:100%;object-fit:cover}
+.membership{background:#123c69;color:white;border-radius:18px;padding:45px 30px;text-align:center}.membership h2{font-size:32px;margin-bottom:10px}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+footer{background:#101827;color:#cbd5e1;text-align:center;padding:30px 20px}footer strong{color:white}
+@media(max-width:750px){nav{display:none}.stats{grid-template-columns:repeat(2,1fr)}.hero{padding:70px 20px}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<div class="brand">SRCC SCIENCE CLUB<small>NEVER GIVE UP</small></div>
+<nav>
+<a href="#about">About</a><a href="#activities">Activities</a><a href="#events">Events</a><a href="#committee">Committee</a><a href="#gallery">Gallery</a><a href="#membership">Membership</a><a href="#contact">Contact</a>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<h1>SRCC SCIENCE CLUB</h1>
+<h2>Shaheed Ramiz Uddin Cantonment College</h2>
+<div class="motto">NEVER GIVE UP</div>
+<a class="btn" href="#membership">Join the Club</a>
+<a class="btn alt" href="#about">Explore</a>
+</section>
+
+<section id="about">
+<div class="title"><h2>About the Club</h2><p>Science, creativity, innovation and teamwork beyond the classroom.</p></div>
+<p>SRCC Science Club is a science-based student organization of Shaheed Ramiz Uddin Cantonment College, established in 2015. The club aims to encourage scientific thinking, creativity, innovation, teamwork, and practical learning among students. Through workshops, presentations, science-related activities, and collaborative events, the club provides students with opportunities to explore science beyond the classroom.</p>
+<div class="stats"><div class="stat"><b>2015</b>Established</div><div class="stat"><b>Science</b>Focus</div><div class="stat"><b>Team</b>Learning</div><div class="stat"><b>∞</b>Ideas</div></div>
+</section>
+
+<section id="activities">
+<div class="title"><h2>Our Activities</h2><p>Learning by doing, sharing and creating.</p></div>
+<div class="grid">
+<div class="card"><h3>Science Workshops & Sessions</h3><p>Interactive sessions on science, technology and practical learning.</p></div>
+<div class="card"><h3>Science Projects & Experiments</h3><p>Hands-on projects and experiments based on real-world problems.</p></div>
+<div class="card"><h3>Idea Presentation</h3><p>Students present innovative ideas and receive feedback.</p></div>
+<div class="card"><h3>Wall Magazine</h3><p>Creative science communication through articles, illustrations and designs.</p></div>
+<div class="card"><h3>Science Quiz & Competitions</h3><p>Fun competitions that develop scientific knowledge and problem-solving skills.</p></div>
+<div class="card"><h3>Awareness & Educational Programs</h3><p>Programs focused on science, education and current issues.</p></div>
+</div>
+</section>
+
+<section id="events">
+<div class="title"><h2>Upcoming Events</h2><p>Stay connected for new announcements.</p></div>
+<div class="notice"><h3>No upcoming public event right now</h3><p>New events, workshops and sessions will be announced here.</p></div>
+</section>
+
+<section id="notice">
+<div class="title"><h2>Latest Notice</h2></div>
+<div class="notice">
+<h3>HSC Batch 28 Session</h3>
+<p><strong>Date:</strong> October 16, 2026 &nbsp; | &nbsp; <strong>Time:</strong> 10:00 AM &nbsp; | &nbsp; <strong>Room:</strong> 305</p>
+<p><strong>Topics:</strong> Canva & Wall Magazine — Iftekhar Ahamed; Idea Presentation — Tamjidul Tamim</p>
+</div>
+</section>
+
+<section id="committee" class="committee">
+<div class="title"><h2>Our Committee</h2><p>Committee member photos can be added later without changing the website layout.</p></div>
+<div class="grid">
+<div class="card member"><div class="avatar">P</div><h3>President</h3><div class="role">Executive Committee</div><div class="name">Name to be added</div></div>
+<div class="card member"><div class="avatar">VA</div><h3>Vice President of Administration</h3><div class="role">Executive Committee</div><div class="name">Name to be added</div></div>
+<div class="card member"><div class="avatar">VW</div><h3>Vice President of Workshop</h3><div class="role">Executive Committee</div><div class="name">Name to be added</div></div>
+<div class="card member"><div class="avatar">GS</div><h3>General Secretary</h3><div class="role">Executive Committee</div><div class="name">Name to be added</div></div>
+<div class="card member"><div class="avatar">JS</div><h3>Joint Secretary</h3><div class="role">Executive Committee</div><div class="name">Name to be added</div></div>
+<div class="card member"><div class="avatar">OS</div><h3>Organizing Secretary</h3><div class="role">Executive Committee</div><div class="name">Name to be added</div></div>
+<div class="card member"><div class="avatar">IT</div><h3>IT Secretary</h3><div class="role">Executive Committee</div><div class="name">Name to be added</div></div>
+<div class="card member"><div class="avatar">FS</div><h3>Financial Secretary</h3><div class="role">Executive Committee</div><div class="name">Name to be added</div></div>
+</div>
+</section>
+
+<section id="gallery">
+<div class="title"><h2>Club Gallery</h2><p>Photos from SRCC Science Club activities.</p></div>
+<div class="gallery">
+<div class="gallery-item">SRCC SCIENCE CLUB<br>SCIENCE • IDEAS • TEAMWORK</div>
+<div class="gallery-item">WORKSHOPS<br>LEARNING BY DOING</div>
+<div class="gallery-item">NEVER GIVE UP</div>
+<div class="gallery-item">EVENTS & ACTIVITIES</div>
+</div>
+</section>
+
+<section id="membership">
+<div class="membership">
+<h2>Become a Member</h2>
+<p>Membership Fee: <strong>৳200</strong></p>
+<p>Eligibility: HSC 1st & 2nd Year students of Shaheed Ramiz Uddin Cantonment College.</p>
+<br>
+<a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScIEWwka4oVTLzyZQUttbBt9genLq1bWyphdWTvP2uHjDChzwg/viewform?usp=dialog" target="_blank">Registration Form</a>
+</div>
+</section>
+
+<section id="contact">
+<div class="title"><h2>Contact Us</h2></div>
+<div class="contact-grid">
+<div class="card"><h3>Address</h3><p>Shaheed Ramiz Uddin Cantonment College, Dhaka Cantonment</p></div>
+<div class="card"><h3>Phone</h3><p>01917616017</p></div>
+<div class="card"><h3>Email</h3><p>srccscienceclub@gmail.com</p></div>
+<div class="card"><h3>Facebook</h3><p><a href="https://www.facebook.com/srccsc" target="_blank">facebook.com/srccsc</a></p></div>
+</div>
+</section>
+
+<footer><strong>SRCC SCIENCE CLUB</strong><br>Shaheed Ramiz Uddin Cantonment College<br><small>NEVER GIVE UP © 2026</small></footer>
+</body>
+</html>
