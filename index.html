@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101820">
+<title>SRCC SCIENCE CLUB</title>
+
+<style>
+:root{
+    --dark:#101820;
+    --dark2:#1b2730;
+    --gear:#59646b;
+    --yellow:#ffd92f;
+    --yellow2:#ffea70;
+    --cyan:#8fe7f5;
+    --white:#fff;
+    --bg:#f5f6f7;
+    --text:#182027;
+    --muted:#66727a;
+    --border:#dfe4e7;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+header{
+    height:76px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(16,24,32,.97);
+    box-shadow:0 3px 20px rgba(0,0,0,.25);
+}
+
+.header-inner{
+    max-width:1200px;
+    height:100%;
+    margin:auto;
+    padding:0 22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.menu-btn{
+    position:absolute;
+    left:22px;
+    width:42px;
+    height:42px;
+    border:0;
+    background:transparent;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    padding:8px;
+}
+.menu-btn span{
+    display:block;
+    width:24px;
+    height:2px;
+    background:#fff;
+    border-radius:3px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#fff;
+}
+.logo img{
+    width:43px;
+    height:43px;
+    object-fit:contain;
+    border-radius:50%;
+}
+.logo-text h1{
+    font-size:18px;
+    letter-spacing:.8px;
+    line-height:1.15;
+}
+.logo-text span{
+    display:block;
+    color:var(--yellow);
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:3px;
+    font-weight:bold;
+}
+
+.side-menu{
+    position:fixed;
+    left:-310px;
+    top:0;
+    width:290px;
+    max-width:85vw;
+    height:100vh;
+    overflow-y:auto;
+    background:var(--dark);
+    z-index:3000;
+    padding:80px 25px 30px;
+    box-shadow:5px 0 30px rgba(0,0,0,.3);
+    transition:left .35s;
+}
+.side-menu.active{left:0}
+.side-menu .menu-logo{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    margin-bottom:12px;
+}
+.side-menu h3{color:#fff;font-size:20px}
+.side-menu p{color:#aeb9bf;font-size:12px;margin-bottom:22px}
+.side-menu a{
+    display:block;
+    color:#e1e7ea;
+    padding:13px 5px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-size:14px;
+}
+.side-menu a:hover{color:var(--yellow)}
+.menu-close{
+    position:absolute;
+    right:20px;
+    top:20px;
+    color:#fff;
+    background:none;
+    border:0;
+    font-size:27px;
+    cursor:pointer;
+}
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.62);
+    z-index:2500;
+    display:none;
+}
+.menu-overlay.active{display:block}
+
+.hero{
+    min-height:680px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 80% 25%,rgba(255,217,47,.16),transparent 28%),
+        linear-gradient(110deg,#0b1116 0%,#16242d 58%,#25343c 100%);
+}
+.hero:after{
+    content:"";
+    position:absolute;
+    width:520px;
+    height:520px;
+    right:-150px;
+    bottom:-190px;
+    border:70px solid rgba(255,217,47,.08);
+    border-radius:50%;
+}
+.hero-inner{
+    max-width:1200px;
+    width:100%;
+    margin:auto;
+    padding:85px 25px;
+    color:#fff;
+    position:relative;
+    z-index:2;
+}
+.hero-logo{
+    width:145px;
+    height:145px;
+    object-fit:contain;
+    margin-bottom:20px;
+    filter:drop-shadow(0 12px 25px rgba(0,0,0,.35));
+}
+.hero small{
+    color:var(--yellow);
+    font-size:12px;
+    letter-spacing:2px;
+    font-weight:bold;
+}
+.hero h2{
+    font-size:60px;
+    line-height:1.08;
+    max-width:760px;
+    margin:16px 0;
+}
+.hero h2 span{color:var(--yellow)}
+.hero p{
+    max-width:650px;
+    color:#d4dde1;
+    font-size:18px;
+    margin-bottom:30px;
+}
+.motto{
+    display:inline-block;
+    color:var(--cyan);
+    font-size:14px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:22px;
+}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+    display:inline-block;
+    padding:13px 23px;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:bold;
+}
+.btn-primary{background:var(--yellow);color:#111}
+.btn-primary:hover{background:var(--yellow2)}
+.btn-outline{border:1px solid rgba(255,255,255,.55);color:#fff}
+.btn-outline:hover{background:#fff;color:var(--dark)}
+
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 25px;
+}
+.section-head{margin-bottom:40px}
+.section-head.center{text-align:center}
+.label{
+    color:#c49e00;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+}
+.section-head h2{color:var(--dark);font-size:36px;margin-bottom:8px}
+.section-head p{color:var(--muted);max-width:650px}
+.section-head.center p{margin:auto}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:55px;
+    align-items:center;
+}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:15px}
+.about-image{
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(16,24,32,.15);
+}
+.about-image img{width:100%;height:370px;object-fit:cover}
+
+.yellow-section{background:#fffbea}
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+.card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:28px;
+    transition:.25s;
+}
+.card:hover,.member:hover,.club-page:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(16,24,32,.10);
+}
+.card-icon{
+    width:50px;height:50px;
+    display:flex;align-items:center;justify-content:center;
+    background:#fff5b8;
+    border-radius:10px;
+    font-size:24px;
+    margin-bottom:18px;
+}
+.card h3{color:var(--dark);margin-bottom:7px}
+.card p{color:var(--muted);font-size:14px}
+
+.events{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+.event{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+}
+.event-top{background:var(--dark);padding:20px;color:#fff}
+.event-date{color:var(--yellow);font-size:11px;font-weight:bold;margin-bottom:5px}
+.event-body{padding:20px}
+.event-body p{color:var(--muted);font-size:14px}
+
+.notice-section{background:var(--dark);color:#fff}
+.notice-section .section-head h2{color:#fff}
+.notice-section .section-head p{color:#aeb9bf}
+.notice-list{background:var(--dark2);border-radius:10px;overflow:hidden}
+.notice{
+    padding:18px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+.notice:last-child{border-bottom:0}
+.notice strong{color:var(--yellow)}
+.notice small{color:#c0cbd0}
+.notice span{color:#9eabb2;font-size:12px;white-space:nowrap}
+
+.members{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+.member{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+    cursor:pointer;
+    transition:.25s;
+}
+.member img{
+    width:115px;height:115px;
+    border-radius:50%;
+    object-fit:cover;
+    margin:0 auto 15px;
+    border:4px solid #fff1a0;
+}
+.member h3{color:var(--dark);font-size:16px}
+.member-role{color:#9b7d00;font-size:13px;font-weight:bold;margin-top:3px}
+.member small{display:block;color:#9aa5ab;font-size:10px;margin-top:10px}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.72);
+    z-index:5000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+.modal.active{display:flex}
+.modal-box{
+    background:#fff;
+    width:100%;
+    max-width:500px;
+    max-height:90vh;
+    overflow-y:auto;
+    border-radius:15px;
+    padding:30px;
+    position:relative;
+}
+.close{
+    position:absolute;
+    right:18px;
+    top:12px;
+    border:0;
+    background:none;
+    font-size:27px;
+    cursor:pointer;
+}
+.profile{text-align:center}
+.profile img{
+    width:115px;height:115px;
+    border-radius:50%;
+    object-fit:cover;
+    margin:auto;
+    border:4px solid #fff1a0;
+}
+.profile h2{color:var(--dark);margin-top:13px}
+.profile .role{color:#9b7d00;font-weight:bold}
+.details{margin-top:22px;border-top:1px solid var(--border);padding-top:15px}
+.detail{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:9px 0;
+    border-bottom:1px solid #f0f2f5;
+    font-size:13px;
+}
+.detail span:first-child{color:var(--muted)}
+.detail span:last-child{font-weight:bold;text-align:right}
+
+.form-section{background:#eef1f2}
+.form-box{
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    padding:35px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    box-shadow:0 10px 35px rgba(16,24,32,.07);
+}
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+.form-group{display:flex;flex-direction:column}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:13px;font-weight:bold;margin-bottom:7px}
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #d6dee2;
+    border-radius:6px;
+    outline:none;
+    font-size:14px;
+    background:#fff;
+}
+input:focus,select:focus,textarea:focus{
+    border-color:#c9a500;
+    box-shadow:0 0 0 3px rgba(255,217,47,.15);
+}
+textarea{min-height:120px;resize:vertical}
+.submit{
+    width:100%;
+    border:0;
+    background:var(--dark);
+    color:#fff;
+    padding:14px;
+    border-radius:6px;
+    margin-top:22px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.submit:hover{background:#26343d}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+.gallery-item{
+    height:230px;
+    overflow:hidden;
+    border-radius:10px;
+    cursor:pointer;
+    background:#e8ecee;
+}
+.gallery-item img{
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+.gallery-item:hover img{transform:scale(1.06)}
+
+.club-pages{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+.club-page{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:28px 20px;
+    text-align:center;
+    transition:.25s;
+}
+.social-icon{
+    width:55px;height:55px;
+    margin:0 auto 15px;
+    border-radius:50%;
+    background:#fff5b8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+.club-page h3{color:var(--dark);margin-bottom:5px}
+.club-page p{color:var(--muted);font-size:13px;margin-bottom:15px}
+.visit{color:#9b7d00;font-size:13px;font-weight:bold}
+
+.contact{background:#fffbea}
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+.contact-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    text-align:center;
+    padding:28px;
+}
+.contact-card .icon{font-size:25px;margin-bottom:10px}
+.contact-card h3{color:var(--dark);margin-bottom:5px}
+.contact-card p{color:var(--muted);font-size:14px;overflow-wrap:anywhere}
+
+footer{
+    background:#0a1015;
+    color:#9eabb2;
+    padding:40px 25px 20px;
+}
+.footer{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+}
+.footer-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+}
+.footer-brand img{width:55px;height:55px;object-fit:contain}
+.footer h3,.footer h4{color:#fff;margin-bottom:12px}
+.footer p,.footer a{font-size:13px;color:#91a0a8}
+.footer a{display:block;margin-bottom:7px}
+.footer a:hover{color:var(--yellow)}
+.footer-motto{
+    color:var(--cyan)!important;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    margin-top:12px;
+}
+.copyright{
+    max-width:1200px;
+    margin:30px auto 0;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.08);
+    text-align:center;
+    font-size:11px;
+}
+
+@media(max-width:900px){
+    .hero h2{font-size:48px}
+    .about-grid{grid-template-columns:1fr}
+    .cards,.events{grid-template-columns:repeat(2,1fr)}
+    .members,.club-pages{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+    .header-inner{padding:0 15px}
+    .menu-btn{left:15px}
+    .logo img{width:37px;height:37px}
+    .logo-text h1{font-size:14px}
+    .logo-text span{font-size:7px;letter-spacing:1px}
+    .hero{min-height:600px}
+    .hero-inner{padding:70px 20px}
+    .hero-logo{width:115px;height:115px}
+    .hero h2{font-size:39px}
+    .hero p{font-size:16px}
+    .section{padding:60px 18px}
+    .section-head h2{font-size:30px}
+    .cards,.events,.members,.gallery,.club-pages,.contact-grid{grid-template-columns:1fr}
+    .form-grid{grid-template-columns:1fr}
+    .form-group.full{grid-column:auto}
+    .form-box{padding:22px}
+    .gallery-item{height:220px}
+    .footer{grid-template-columns:1fr;gap:25px}
+    .notice{align-items:flex-start;padding:16px}
+    .notice span{font-size:10px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu-overlay" id="overlay" onclick="closeMenu()"></div>
+
+<nav class="side-menu" id="sideMenu">
+    <button class="menu-close" onclick="closeMenu()">×</button>
+    <img class="menu-logo" src="logo.jpg" alt="SRCC Science Club Logo">
+    <h3>SRCC SCIENCE CLUB</h3>
+    <p>NEVER GIVE UP</p>
+
+    <a href="#home" onclick="closeMenu()">🏠 Home</a>
+    <a href="#about" onclick="closeMenu()">🔬 About Club</a>
+    <a href="#activities" onclick="closeMenu()">🧪 Activities</a>
+    <a href="#events" onclick="closeMenu()">📅 Events</a>
+    <a href="#notice" onclick="closeMenu()">📢 Notice Board</a>
+    <a href="#committee" onclick="closeMenu()">👥 Committee</a>
+    <a href="#join" onclick="closeMenu()">📝 Join the Club</a>
+    <a href="#gallery" onclick="closeMenu()">📸 Photo Gallery</a>
+    <a href="#club-pages" onclick="closeMenu()">🌐 Club Pages</a>
+    <a href="#contact" onclick="closeMenu()">📞 Contact</a>
+</nav>
+
+<header>
+    <div class="header-inner">
+        <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
+
+        <a class="logo" href="#home">
+            <img src="logo.jpg" alt="SRCC Science Club Logo">
+            <div class="logo-text">
+                <h1>SRCC SCIENCE CLUB</h1>
+                <span>NEVER GIVE UP</span>
+            </div>
+        </a>
+    </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+    <div class="hero-inner">
+        <img class="hero-logo" src="logo.jpg" alt="SRCC Science Club Logo">
+        <small>WELCOME TO SRCC SCIENCE CLUB</small>
+        <h2>Inspiring Curiosity.<br><span>Creating Innovators.</span></h2>
+        <div class="motto">SRCC SCIENCE CLUB • NEVER GIVE UP</div>
+        <p>A student-led community dedicated to science, technology, research and innovation.</p>
+
+        <div class="hero-buttons">
+            <a href="#join" class="btn btn-primary">Join the Club</a>
+            <a href="#about" class="btn btn-outline">Explore Club</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="section-head">
+        <div class="label">About Us</div>
+        <h2>Building a Culture of Science</h2>
+    </div>
+
+    <div class="about-grid">
+        <div class="about-text">
+            <p><b>SRCC SCIENCE CLUB</b> is a student-driven community dedicated to developing curiosity, creativity and scientific thinking.</p>
+            <p>Our goal is to create an environment where students can learn, experiment, collaborate and transform ideas into meaningful projects.</p>
+            <p><b>Our Motto:</b> SRCC SCIENCE CLUB — NEVER GIVE UP.</p>
+        </div>
+
+        <div class="about-image">
+            <img src="logo.jpg" alt="SRCC Science Club Logo">
+        </div>
+    </div>
+</section>
+
+<section class="yellow-section" id="activities">
+    <div class="section">
+        <div class="section-head center">
+            <div class="label">Activities</div>
+            <h2>Explore. Experiment. Innovate.</h2>
+            <p>Discover different areas of science through practical and collaborative activities.</p>
+        </div>
+
+        <div class="cards">
+            <article class="card"><div class="card-icon">🔬</div><h3>Science Experiments</h3><p>Hands-on experiments and scientific demonstrations.</p></article>
+            <article class="card"><div class="card-icon">🤖</div><h3>Robotics</h3><p>Learn robotics, programming and technology.</p></article>
+            <article class="card"><div class="card-icon">🌌</div><h3>Astronomy</h3><p>Explore planets, stars and the universe.</p></article>
+            <article class="card"><div class="card-icon">💡</div><h3>Innovation</h3><p>Turn creative ideas into useful projects.</p></article>
+            <article class="card"><div class="card-icon">🧠</div><h3>Science Quiz</h3><p>Develop scientific knowledge and reasoning.</p></article>
+            <article class="card"><div class="card-icon">🏆</div><h3>Competitions</h3><p>Participate in fairs, olympiads and competitions.</p></article>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="events">
+    <div class="section-head center">
+        <div class="label">Events</div>
+        <h2>Upcoming Events</h2>
+        <p>Stay updated with our latest club activities.</p>
+    </div>
+
+    <div class="events">
+        <article class="event">
+            <div class="event-top"><div class="event-date">15 NOVEMBER 2026</div><h3>Science Fair 2026</h3></div>
+            <div class="event-body"><p>Showcase your innovative science projects.</p></div>
+        </article>
+
+        <article class="event">
+            <div class="event-top"><div class="event-date">28 NOVEMBER 2026</div><h3>Science Quiz</h3></div>
+            <div class="event-body"><p>Challenge yourself in our science competition.</p></div>
+        </article>
+
+        <article class="event">
+            <div class="event-top"><div class="event-date">10 DECEMBER 2026</div><h3>Robotics Workshop</h3></div>
+            <div class="event-body"><p>Learn robotics and build your first project.</p></div>
+        </article>
+    </div>
+</section>
+
+<section class="notice-section" id="notice">
+    <div class="section">
+        <div class="section-head">
+            <div class="label">Announcements</div>
+            <h2>Notice Board</h2>
+            <p>Important updates from the club.</p>
+        </div>
+
+        <div class="notice-list">
+            <div class="notice">
+                <div><strong>Membership Registration Open</strong><br><small>New members can apply now.</small></div>
+                <span>05 OCT 2026</span>
+            </div>
+
+            <div class="notice">
+                <div><strong>Science Fair Registration</strong><br><small>Project submission deadline announced.</small></div>
+                <span>03 OCT 2026</span>
+            </div>
+
+            <div class="notice">
+                <div><strong>Monthly Club Meeting</strong><br><small>Meeting details will be announced soon.</small></div>
+                <span>01 OCT 2026</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="committee">
+    <div class="section-head center">
+        <div class="label">Committee</div>
+        <h2>Our Committee</h2>
+        <p>Meet the students working together to lead and grow SRCC Science Club.</p>
+    </div>
+
+    <div class="members">
+        <article class="member" onclick="openMember(this)"
+            data-name="President Name"
+            data-role="President"
+            data-image="logo.jpg"
+            data-club="SRCC Science Club"
+            data-session="2026–2027">
+            <img src="logo.jpg" alt="President">
+            <h3>President Name</h3>
+            <div class="member-role">President</div>
+            <small>Click to view profile</small>
+        </article>
+
+        <article class="member" onclick="openMember(this)"
+            data-name="Secretary Name"
+            data-role="General Secretary"
+            data-image="logo.jpg"
+            data-club="SRCC Science Club"
+            data-session="2026–2027">
+            <img src="logo.jpg" alt="General Secretary">
+            <h3>Secretary Name</h3>
+            <div class="member-role">General Secretary</div>
+            <small>Click to view profile</small>
+        </article>
+
+        <article class="member" onclick="openMember(this)"
+            data-name="Treasurer Name"
+            data-role="Treasurer"
+            data-image="logo.jpg"
+            data-club="SRCC Science Club"
+            data-session="2026–2027">
+            <img src="logo.jpg" alt="Treasurer">
+            <h3>Treasurer Name</h3>
+            <div class="member-role">Treasurer</div>
+            <small>Click to view profile</small>
+        </article>
+
+        <article class="member" onclick="openMember(this)"
+            data-name="Member Name"
+            data-role="Organizing Secretary"
+            data-image="logo.jpg"
+            data-club="SRCC Science Club"
+            data-session="2026–2027">
+            <img src="logo.jpg" alt="Organizing Secretary">
+            <h3>Member Name</h3>
+            <div class="member-role">Organizing Secretary</div>
+            <small>Click to view profile</small>
+        </article>
+    </div>
+</section>
+
+<div class="modal" id="memberModal" onclick="modalOutside(event)">
+    <div class="modal-box">
+        <button class="close" onclick="closeMember()">×</button>
+        <div class="profile">
+            <img id="modalImage" src="logo.jpg" alt="Committee member">
+            <h2 id="modalName">Member Name</h2>
+            <div class="role" id="modalRole">Position</div>
+
+            <div class="details">
+                <div class="detail"><span>Position</span><span id="modalPosition">-</span></div>
+                <div class="detail"><span>Club</span><span id="modalClub">-</span></div>
+                <div class="detail"><span>Session</span><span id="modalSession">-</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="form-section" id="join">
+    <div class="section">
+        <div class="section-head center">
+            <div class="label">Membership</div>
+            <h2>Join SRCC Science Club</h2>
+            <p>Become a member and take part in our science, innovation and learning activities.</p>
+        </div>
+
+        <div class="form-box">
+            <form id="membershipForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Student ID</label>
+                        <input type="text" placeholder="Enter your student ID" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Class / Year</label>
+                        <select required>
+                            <option value="">Select your class</option>
+                            <option>1st Year</option>
+                            <option>2nd Year</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Department / Group</label>
+                        <select required>
+                            <option value="">Select group</option>
+                            <option>Science</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="01XXXXXXXXX" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="example@email.com">
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Why do you want to join the club?</label>
+                        <textarea placeholder="Tell us about your interest in science..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit">Submit Membership Application</button>
+                <p id="formMessage" style="margin-top:14px;color:#9b7d00;text-align:center;font-size:13px;"></p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="gallery">
+    <div class="section-head center">
+        <div class="label">Gallery</div>
+        <h2>Moments From Our Club</h2>
+        <p>A glimpse of our activities, events and memorable moments.</p>
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-item"><img src="logo.jpg" alt="SRCC Science Club" loading="lazy"></div>
+        <div class="gallery-item"><img src="logo.jpg" alt="SRCC Science Club" loading="lazy"></div>
+        <div class="gallery-item"><img src="logo.jpg" alt="SRCC Science Club" loading="lazy"></div>
+        <div class="gallery-item"><img src="logo.jpg" alt="SRCC Science Club" loading="lazy"></div>
+        <div class="gallery-item"><img src="logo.jpg" alt="SRCC Science Club" loading="lazy"></div>
+        <div class="gallery-item"><img src="logo.jpg" alt="SRCC Science Club" loading="lazy"></div>
+    </div>
+</section>
+
+<section class="yellow-section" id="club-pages">
+    <div class="section">
+        <div class="section-head center">
+            <div class="label">Connect With Us</div>
+            <h2>Our Club Pages</h2>
+            <p>Follow SRCC Science Club for the latest updates, events and announcements.</p>
+        </div>
+
+        <div class="club-pages">
+            <article class="club-page">
+                <div class="social-icon">📘</div>
+                <h3>Facebook</h3>
+                <p>Follow our official Facebook page.</p>
+                <a href="#" class="visit">Visit Page →</a>
+            </article>
+
+            <article class="club-page">
+                <div class="social-icon">📸</div>
+                <h3>Instagram</h3>
+                <p>See our latest photos and activities.</p>
+                <a href="#" class="visit">Visit Page →</a>
+            </article>
+
+            <article class="club-page">
+                <div class="social-icon">▶️</div>
+                <h3>YouTube</h3>
+                <p>Watch our events and science videos.</p>
+                <a href="#" class="visit">Visit Channel →</a>
+            </article>
+
+            <article class="club-page">
+                <div class="social-icon">💬</div>
+                <h3>Messenger</h3>
+                <p>Contact us directly through Messenger.</p>
+                <a href="#" class="visit">Message Us →</a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="section">
+        <div class="section-head center">
+            <div class="label">Contact</div>
+            <h2>Get In Touch</h2>
+            <p>Have a question or want to know more about SRCC Science Club?</p>
+        </div>
+
+        <div class="contact-grid">
+            <article class="contact-card">
+                <div class="icon">📍</div>
+                <h3>Location</h3>
+                <p>Shaheed Ramiz Uddin Cantonment College</p>
+            </article>
+
+            <article class="contact-card">
+                <div class="icon">📞</div>
+                <h3>Phone</h3>
+                <p>Contact number to be added</p>
+            </article>
+
+            <article class="contact-card">
+                <div class="icon">✉️</div>
+                <h3>Email</h3>
+                <p>srccscienceclub@gmail.com</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="footer">
+        <div>
+            <div class="footer-brand">
+                <img src="logo.jpg" alt="SRCC Science Club Logo">
+                <h3>SRCC SCIENCE CLUB</h3>
+            </div>
+            <p>A student-driven community dedicated to science, technology, research and innovation.</p>
+            <p class="footer-motto">SRCC SCIENCE CLUB • NEVER GIVE UP</p>
+        </div>
+
+        <div>
+            <h4>Quick Links</h4>
+            <a href="#home">Home</a>
+            <a href="#about">About Club</a>
+            <a href="#activities">Activities</a>
+            <a href="#events">Events</a>
+            <a href="#join">Join the Club</a>
+        </div>
+
+        <div>
+            <h4>Explore</h4>
+            <a href="#committee">Committee</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#club-pages">Club Pages</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+
+    <div class="copyright">
+        © 2026 SRCC SCIENCE CLUB. All Rights Reserved.
+    </div>
+</footer>
+
+<script>
+function openMenu(){
+    document.getElementById("sideMenu").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+}
+
+function closeMenu(){
+    document.getElementById("sideMenu").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+}
+
+function openMember(member){
+    document.getElementById("modalName").textContent=member.dataset.name;
+    document.getElementById("modalRole").textContent=member.dataset.role;
+    document.getElementById("modalPosition").textContent=member.dataset.role;
+    document.getElementById("modalClub").textContent=member.dataset.club;
+    document.getElementById("modalSession").textContent=member.dataset.session;
+    document.getElementById("modalImage").src=member.dataset.image;
+    document.getElementById("memberModal").classList.add("active");
+}
+
+function closeMember(){
+    document.getElementById("memberModal").classList.remove("active");
+}
+
+function modalOutside(event){
+    if(event.target===document.getElementById("memberModal")) closeMember();
+}
+
+document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"){
+        closeMenu();
+        closeMember();
+    }
+});
+
+document.getElementById("membershipForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    document.getElementById("formMessage").textContent=
+        "Demo form submitted. A real registration system can be connected later.";
+});
+</script>
+
+</body>
+</html>
