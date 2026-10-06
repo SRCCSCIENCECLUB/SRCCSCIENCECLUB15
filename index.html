@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101820">
+<title>SRCC SCIENCE CLUB</title>
+
+<style>
+:root{
+    --dark:#101820;
+    --dark2:#1b2730;
+    --gear:#59646b;
+    --yellow:#ffd92f;
+    --yellow2:#ffea70;
+    --cyan:#8fe7f5;
+    --white:#fff;
+    --bg:#f5f6f7;
+    --text:#182027;
+    --muted:#66727a;
+    --border:#dfe4e7;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+header{
+    height:76px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(16,24,32,.97);
+    box-shadow:0 3px 20px rgba(0,0,0,.25);
+}
+
+.header-inner{
+    max-width:1200px;
+    height:100%;
+    margin:auto;
+    padding:0 22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.menu-btn{
+    position:absolute;
+    left:22px;
+    width:42px;
+    height:42px;
+    border:0;
+    background:transparent;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    padding:8px;
+}
+.menu-btn span{
+    display:block;
+    width:24px;
+    height:2px;
+    background:#fff;
+    border-radius:3px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#fff;
+}
+.logo img{
+    width:43px;
+    height:43px;
+    object-fit:contain;
+    border-radius:50%;
+}
+.logo-text h1{
+    font-size:18px;
+    letter-spacing:.8px;
+    line-height:1.15;
+}
+.logo-text span{
+    display:block;
+    color:var(--yellow);
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:3px;
+    font-weight:bold;
+}
+
+.side-menu{
+    position:fixed;
+    left:-310px;
+    top:0;
+    width:290px;
+    max-width:85vw;
+    height:100vh;
+    overflow-y:auto;
+    background:var(--dark);
+    z-index:3000;
+    padding:80px 25px 30px;
+    box-shadow:5px 0 30px rgba(0,0,0,.3);
+    transition:left .35s;
+}
+.side-menu.active{left:0}
+.side-menu .menu-logo{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    margin-bottom:12px;
+}
+.side-menu h3{color:#fff;font-size:20px}
+.side-menu p{color:#aeb9bf;font-size:12px;margin-bottom:22px}
+.side-menu a{
+    display:block;
+    color:#e1e7ea;
+    padding:13px 5px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-size:14px;
+}
+.side-menu a:hover{color:var(--yellow)}
+.menu-close{
+    position:absolute;
+    right:20px;
+    top:20px;
+    color:#fff;
+    background:none;
+    border:0;
+    font-size:27px;
+    cursor:pointer;
+}
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.62);
+    z-index:2500;
+    display:none;
+}
+.menu-overlay.active{display:block}
+
+.hero{
+    min-height:680px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 80% 25%,rgba(255,217,47,.16),transparent 28%),
+        linear-gradient(110deg,#0b1116 0%,#16242d 58%,#25343c 100%);
+}
+.hero:after{
+    content:"";
+    position:absolute;
+    width:520px;
+    height:520px;
+    right:-150px;
+    bottom:-190px;
+    border:70px solid rgba(255,217,47,.08);
+    border-radius:50%;
+}
+.hero-inner{
+    max-width:1200px;
+    width:100%;
+    margin:auto;
+    padding:85px 25px;
+    color:#fff;
+    position:relative;
+    z-index:2;
+}
+.hero-logo{
+    width:145px;
+    height:145px;
+    object-fit:contain;
+    margin-bottom:20px;
+    filter:drop-shadow(0 12px 25px rgba(0,0,0,.35));
+}
+.hero small{
+    color:var(--yellow);
+    font-size:12px;
+    letter-spacing:2px;
+    font-weight:bold;
+}
+.hero h2{
+    font-size:60px;
+    line-height:1.08;
+    max-width:760px;
+    margin:16px 0;
+}
+.hero h2 span{color:var(--yellow)}
+.hero p{
+    max-width:650px;
+    color:#d4dde1;
+    font-size:18px;
+    margin-bottom:30px;
+}
+.motto{
+    display:inline-block;
+    color:var(--cyan);
+    font-size:14px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:22px;
+}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+    display:inline-block;
+    padding:13px 23px;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:bold;
+}
+.btn-primary{background:var(--yellow);color:#111}
+.btn-primary:hover{background:var(--yellow2)}
+.btn-outline{border:1px solid rgba(255,255,255,.55);color:#fff}
+.btn-outline:hover{background:#fff;color:var(--dark)}
+
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 25px;
+}
+.section-head{margin-bottom:40px}
+.section-head.center{text-align:center}
+.label{
+    color:#c49e00;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+}
+.section-head h2{color:var(--dark);font-size:36px;margin-bottom:8px}
+.section-head p{color:var(--muted);max-width:650px}
+.section-head.center p{margin:auto}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:55px;
+    align-items:center;
+}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:15px}
+.about-image{
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(16,24,32,.15);
+}
+.about-image img{width:100%;height:370px;object-fit:cover}
+
+.yellow-section{background:#fffbea}
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+.card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:28px;
+    transition:.25s;
+}
+.card:hover,.member:hover,.club-page:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(16,24,32,.10);
+}
+.card-icon{
+    width:50px;height:50px;
+    display:flex;align-items:center;justify-content:center;
+    background:#fff5b8;
+    border-radius:10px;
+    font-size:24px;
+    margin-bottom:18px;
+}
+.card h3{color:var(--dark);margin-bottom:7px}
+.card p{color:var(--muted);font-size:14px}
+
+.events{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+.event{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+}
+.event-top{background:var(--dark);padding:20px;color:#fff}
+.event-date{color:var(--yellow);font-size:11px;font-weight:bold;margin-bottom:5px}
+.event-body{padding:20px}
+.event-body p{color:var(--muted);font-size:14px}
+
+.notice-section{background:var(--dark);color:#fff}
+.notice-section .section-head h2{color:#fff}
+.notice-section .section-head p{color:#aeb9bf}
+.notice-list{background:var(--dark2);border-radius:10px;overflow:hidden}
+.notice{
+    padding:18px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+.notice:last-child{border-bottom:0}
+.notice strong{color:var(--yellow)}
+.notice small{color:#c0cbd0}
+.notice span{color:#9eabb2;font-size:12px;white-space:nowrap}
+
+.members{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+.member{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+    cursor:pointer;
+    transition:.25s;
+}
+.member img{
+    width:115px;height:115px;
+    border-radius:50%;
+    object-fit:cover;
+    margin:0 auto 15px;
+    border:4px solid #fff1a0;
+}
+.member h3{color:var(--dark);font-size:16px}
+.member-role{color:#9b7d00;font-size:13px;font-weight:bold;margin-top:3px}
+.member small{display:block;color:#9aa5ab;font-size:10px;margin-top:10px}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.72);
+    z-index:5000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+.modal.active{display:flex}
+.modal-box{
+    background:#fff;
+    width:100%;
+    max-width:500px;
+    max-height:90vh;
+    overflow-y:auto;
+    border-radius:15px;
+    padding:30px;
+    position:relative;
+}
+.close{
+    position:absolute;
+    right:18px;
+    top:12px;
+    border:0;
+    background:none;
+    font-size:27px;
+    cursor:pointer;
+}
+.profile{text-align:center}
+.profile img{
+    width:115px;height:115px;
+    border-radius:50%;
+    object-fit:cover;
+    margin:auto;
+    border:4px solid #fff1a0;
+}
+.profile h2{color:var(--dark);margin-top:13px}
+.profile .role{color:#9b7d00;font-weight:bold}
+.details{margin-top:22px;border-top:1px solid var(--border);padding-top:15px}
+.detail{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:9px 0;
+    border-bottom:1px solid #f0f2f5;
+    font-size:13px;
+}
+.detail span:first-child{color:var(--muted)}
+.detail span:last-child{font-weight:bold;text-align:right}
+
+.form-section{background:#eef1f2}
+.form-box{
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    padding:35px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    box-shadow:0 10px 35px rgba(16,24,32,.07);
+}
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+.form-group{display:flex;flex-direction:column}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:13px;font-weight:bold;margin-bottom:7px}
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #d6dee2;
+    border-radius:6px;
+    outline:none;
+    font-size:14px;
+    background:#fff;
+}
+input:focus,select:focus,textarea:focus{
+    border-color:#c9a500;
+    box-shadow:0 0 0 3px rgba(255,217,47,.15);
+}
+textarea{min-height:120px;resize:vertical}
+.submit{
+    width:100%;
+    border:0;
+    background:var(--dark);
+    color:#fff;
+    padding:14px;
+    border-radius:6px;
+    margin-top:22px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.submit:hover{background:#26343d}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+.gallery-item{
+    height:230px;
+    overflow:hidden;
+    border-radius:10px;
+    cursor:pointer;
+    background:#e8ecee;
+}
+.gallery-item img{
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+.gallery-item:hover img{transform:scale(1.06)}
+
+.club-pages{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+.club-page{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:28px 20px;
+    text-align:center;
+    transition:.25s;
+}
+.social-icon{
+    width:55px;height:55px;
+    margin:0 auto 15px;
+    border-radius:50%;
+    background:#fff5b8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+.club-page h3{color:var(--dark);margin-bottom:5px}
+.club-page p{color:var(--muted);font-size:13px;margin-bottom:15px}
+.visit{color:#9b7d00;font-size:13px;font-weight:bold}
+
+.contact{background:#fffbea}
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+.contact-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    text-align:center;
+    padding:28px;
+}
+.contact-card .icon{font-size:25px;margin-bottom:10px}
+.contact-card h3{color:var(--dark);margin-bottom:5px}
+.contact-card p{color:var(--muted);font-size:14px;overflow-wrap:anywhere}
+
+footer{
+    background:#0a1015;
+    color:#9eabb2;
+    padding:40px 25px 20px;
+}
+.footer{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+}
+.footer-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+}
+.footer-brand img{width:55px;height:55px;object-fit:contain}
+.footer h3,.footer h4{color:#fff;margin-bottom:12px}
+.footer p,.footer a{font-size:13px;color:#91a0a8}
+.footer a{display:block;margin-bottom:7px}
+.footer a:hover{color:var(--yellow)}
+.footer-motto{
+    color:var(--cyan)!important;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    margin-top:12px;
+}
+.copyright{
+    max-width:1200px;
+    margin:30px auto 0;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.08);
+    text-align:center;
+    font-size:11px;
+}
+
+@media(max-width:900px){
+    .hero h2{font-size:48px}
+    .about-grid{grid-template-columns:1fr}
+    .cards,.events{grid-template-columns:repeat(2,1fr)}
+    .members,.club-pages{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+    .header-inner{padding:0 15px}
+    .menu-btn{left:15px}
+    .logo img{width:37px;height:37px}
+    .logo-text h1{font-size:14px}
+    .logo-text span{font-size:7px;letter-spacing:1px}
+    .hero{min-height:600px}
+    .hero-inner{padding:70px 20px}
+    .hero-logo{width:115px;height:115px}
+    .hero h2{font-size:39px}
+    .hero p{font-size:16px}
+    .section{padding:60px 18px}
+    .section-head h2{font-size:30px}
+    .cards,.events,.members,.gallery,.club-pages,.contact-grid{grid-template-columns:1fr}
+    .form-grid{grid-template-columns:1fr}
+    .form-group.full{grid-column:auto}
+    .form-box{padding:22px}
+    .gallery-item{height:220px}
+    .footer{grid-template-columns:1fr;gap:25px}
+    .notice{align-items:flex-start;padding:16px}
+    .notice span{font-size:10px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu-overlay" id="overlay" onclick="closeMenu()"></div>
+
+<nav class="side-menu" id="sideMenu">
+    <button class="menu-close" onclick="closeMenu()">×</button>
+    <img class="menu-logo" src="logo.jpg" alt="SRCC Science Club Logo">
+    <h3>SRCC SCIENCE CLUB</h3>
+    <p>NEVER GIVE UP</p>
+    <a href="#home" onclick="closeMenu()">🏠 Home</a>
+    <a href="#about" onclick="closeMenu()">🔬 About Club</a>
+    <a href="#activities" onclick="closeMenu()">🧪 Activities</a>
+    <a href="#events" onclick="closeMenu()">📅 Events</a>
+    <a href="#notice" onclick="closeMenu()">📢 Notice Board</a>
+    <a href="#committee" onclick="closeMenu()">👥 Committee</a>
+    <a href="#join" onclick="closeMenu()">📝 Membership</a>
+    <a href="#gallery" onclick="closeMenu()">📸 Gallery</a>
+    <a href="#club-pages" onclick="closeMenu()">🌐 Club Pages</a>
+    <a href="#contact" onclick="closeMenu()">📞 Contact</a>
+</nav>
+
+<header>
+    <div class="header-inner">
+        <button class="menu-btn" onclick="openMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <a class="logo" href="#home">
+            <img src="logo.jpg" alt="SRCC Science Club Logo">
+            <div class="logo-text"><h1>SRCC SCIENCE CLUB</h1><span>NEVER GIVE UP</span></div>
+        </a>
+    </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+    <div class="hero-inner">
+        <img class="hero-logo" src="logo.jpg" alt="SRCC Science Club Logo">
+        <small>SHAHEED RAMIZ UDDIN CANTONMENT COLLEGE</small>
+        <h2>Explore Science.<br><span>Build Ideas. Never Give Up.</span></h2>
+        <div class="motto">SRCC SCIENCE CLUB • NEVER GIVE UP</div>
+        <p>A student-led science community established in 2015 to encourage curiosity, creativity, scientific thinking, teamwork and practical learning.</p>
+        <div class="hero-buttons">
+            <a href="#join" class="btn btn-primary">Join the Club</a>
+            <a href="#about" class="btn btn-outline">Explore Club</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="section-head">
+        <div class="label">About Us</div>
+        <h2>Building a Culture of Science</h2>
+    </div>
+    <div class="about-grid">
+        <div class="about-text">
+            <p><b>SRCC SCIENCE CLUB</b> is a student organization of <b>Shaheed Ramiz Uddin Cantonment College</b>, established in <b>2015</b>.</p>
+            <p>The club aims to encourage scientific curiosity, creativity, innovation and practical learning among students. Through workshops, presentations, projects, competitions and collaborative activities, students get opportunities to explore science beyond the classroom.</p>
+            <p>We believe in learning together, sharing ideas and continuing to work toward improvement even when things become difficult.</p>
+            <p><b>Our Motto:</b> NEVER GIVE UP</p>
+        </div>
+        <div class="about-image"><img src="logo.jpg" alt="SRCC Science Club Logo"></div>
+    </div>
+</section>
+
+<section class="yellow-section" id="activities">
+    <div class="section">
+        <div class="section-head center">
+            <div class="label">Activities</div>
+            <h2>Learn. Create. Share.</h2>
+            <p>Our activities focus on science, creativity, communication and practical skills.</p>
+        </div>
+        <div class="cards">
+            <article class="card"><div class="card-icon">🔬</div><h3>Science Workshops</h3><p>Interactive sessions that connect classroom knowledge with practical learning.</p></article>
+            <article class="card"><div class="card-icon">💡</div><h3>Idea Presentation</h3><p>Students can develop, present and discuss creative ideas with others.</p></article>
+            <article class="card"><div class="card-icon">🎨</div><h3>Canva & Design</h3><p>Learn useful design and visual communication skills for club activities.</p></article>
+            <article class="card"><div class="card-icon">📰</div><h3>Wall Magazine</h3><p>Share science-related writing, illustrations, facts and creative work.</p></article>
+            <article class="card"><div class="card-icon">🧠</div><h3>Science Quiz</h3><p>Build scientific knowledge, reasoning and problem-solving skills.</p></article>
+            <article class="card"><div class="card-icon">🏆</div><h3>Competitions & Projects</h3><p>Encourage students to participate in projects, competitions and science events.</p></article>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="events">
+    <div class="section-head center">
+        <div class="label">Events</div><h2>Upcoming Events</h2>
+        <p>No separate upcoming club event has been announced at the moment.</p>
+    </div>
+    <div class="events" style="grid-template-columns:1fr;max-width:760px;margin:auto;">
+        <article class="event">
+            <div class="event-top"><div class="event-date">CURRENT STATUS</div><h3>No Upcoming Event</h3></div>
+            <div class="event-body"><p>There is no separate upcoming event currently announced by SRCC Science Club. Please check the Notice Board for the latest sessions and announcements.</p></div>
+        </article>
+    </div>
+</section>
+
+<section class="notice-section" id="notice">
+    <div class="section">
+        <div class="section-head">
+            <div class="label">Announcements</div><h2>Notice Board</h2>
+            <p>Important information and upcoming sessions from the club.</p>
+        </div>
+        <div class="notice-list">
+            <div class="notice">
+                <div><strong>HSC Batch 28 — Skill Development Session</strong><br><small>Canva & Wall Magazine — Iftekhar Ahamed<br>Idea Presentation — Tamjidul Tamim<br>Room 305 • 10:00 AM</small></div>
+                <span>16 OCT 2026</span>
+            </div>
+            <div class="notice">
+                <div><strong>Membership Registration</strong><br><small>Registration fee ৳200. Open to HSC 1st & 2nd Year students of the college.</small></div>
+                <span>OPEN</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="committee">
+    <div class="section-head center">
+        <div class="label">Committee</div><h2>Our Committee</h2>
+        <p>Committee member information will be added soon.</p>
+    </div>
+    <div class="members">
+        <article class="member"><img src="logo.jpg" alt="Committee member"><h3>To Be Added</h3><div class="member-role">President</div><small>Information coming soon</small></article>
+        <article class="member"><img src="logo.jpg" alt="Committee member"><h3>To Be Added</h3><div class="member-role">Vice President of Administration</div><small>Information coming soon</small></article>
+        <article class="member"><img src="logo.jpg" alt="Committee member"><h3>To Be Added</h3><div class="member-role">Vice President of Workshop</div><small>Information coming soon</small></article>
+        <article class="member"><img src="logo.jpg" alt="Committee member"><h3>To Be Added</h3><div class="member-role">
